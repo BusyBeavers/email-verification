@@ -27,7 +27,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8001
 ```
 
 ## Environment variables
@@ -43,7 +43,7 @@ uvicorn app.main:app --reload
 ### Single email
 
 ```bash
-curl -X POST http://localhost:8000/email/verify \
+curl -X POST http://localhost:8001/email/verify \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com"}'
 ```
@@ -64,7 +64,7 @@ Example response:
 Wrapped payload:
 
 ```bash
-curl -X POST http://localhost:8000/email/verify/batch \
+curl -X POST http://localhost:8001/email/verify/batch \
   -H "Content-Type: application/json" \
   -d '{"emails":["one@example.com","two@example.com"]}'
 ```
@@ -72,7 +72,7 @@ curl -X POST http://localhost:8000/email/verify/batch \
 Raw array payload:
 
 ```bash
-curl -X POST http://localhost:8000/email/verify/batch \
+curl -X POST http://localhost:8001/email/verify/batch \
   -H "Content-Type: application/json" \
   -d '["one@example.com","two@example.com"]'
 ```
